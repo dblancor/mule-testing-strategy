@@ -51,6 +51,11 @@ jobs:
                 "id": "mulesoft-releases",
                 "username": "${{ secrets.RELEASES_USERNAME }}",
                 "password": "${{ secrets.RELEASES_PASSWORD }}"
+            },
+            {
+                "id": "releases-ee",
+                "username": "${{ secrets.RELEASES_USERNAME }}",
+                "password": "${{ secrets.RELEASES_PASSWORD }}"
             }
             ]
 
