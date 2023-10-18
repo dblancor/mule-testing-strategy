@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="unit-testing-test-suite.xml" />
+	<munit:test name="unit-testing-test-suite-unit-testingFlowTest" doc:id="3a8092bd-266d-4af5-a05f-3b9e987c97b4" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to unit-testingFlow" doc:id="b5753906-e15f-4fdd-9340-c308453c22e7" name="unit-testingFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that payload is not null" doc:id="f9b2177f-e39d-4781-8451-3e3051bb47dd" is="#[MunitTools::notNullValue()]" expression="#[payload]"/>
+			<munit-tools:assert-equals doc:name="Assert that country is Spain" doc:id="cc985bb1-f2d0-45ff-9993-9310cef090e4" actual="#[payload.country]" expected='#["Spain"]'/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
