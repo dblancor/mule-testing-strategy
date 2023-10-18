@@ -39,6 +39,21 @@ jobs:
           java-version: '8'
           cache: 'maven'
       
+      - uses: s4u/maven-settings-action@v2.6.0
+        with:
+          servers: |
+            [{
+                "id": "anypoint-exchange-v3",
+                "username": "${{ secrets.RELEASES_USERNAME }}",
+                "password": "${{ secrets.RELEASES_PASSWORD }}"
+            },
+            {
+                "id": "mulesoft-releases",
+                "username": "${{ secrets.RELEASES_USERNAME }}",
+                "password": "${{ secrets.RELEASES_PASSWORD }}"
+            }
+            ]
+
       # runs munit maven suite
       - name: Unit Testing Suite - MUnit
         run: mvn -B clean test
